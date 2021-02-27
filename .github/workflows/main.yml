@@ -42,7 +42,7 @@ jobs:
         run : git status
   
       - name: Get rid of lib files before checking out builds branch
-        run : git rm -r -f Phong/
+        run : git restore -r -f Phong/
              
       - name: Setup ownership for build directory
         run : sudo chown -R $USER .

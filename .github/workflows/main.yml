@@ -48,9 +48,7 @@ jobs:
         run : git stash
       
       - name: Checkout builds branch
-        uses: actions/checkout@v2
-        with:
-          ref: builds
+        run : git checkout builds
           
       - name: Apply stashed changes
         run : git stash pop

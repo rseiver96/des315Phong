@@ -42,7 +42,7 @@ jobs:
         run : git status
   
       - name: Get rid of lib files before checking out builds branch
-        run : git rm -r Phong/
+        run : git rm -r -f Phong/
         
       - name: Setup perms for build directory
         run : sudo chmod -R u+rw /WebBuild/

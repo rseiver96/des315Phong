@@ -38,12 +38,12 @@ jobs:
           projectPath: ./Phong/
           unityVersion: 2019.4.10f1
           targetPlatform: WebGL
-          
+  
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          file_pattern: Build/*.*
+          file_pattern: Build/*.js Build/*.json Build/*.unityweb
           tagging_message: 'release'
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

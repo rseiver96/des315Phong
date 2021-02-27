@@ -46,7 +46,7 @@ jobs:
         with:
           commit_message: Deploy web build
           # push the build on a separate branch
-          branch: release
+          branch: builds
           file_pattern: WebGL/WebBuild/*.js WebGL/WebBuild/*.json WebGL/WebBuild/*.unityweb
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

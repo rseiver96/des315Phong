@@ -43,12 +43,14 @@ jobs:
   
       - name: Directory viewer
         run : ls
+        run : cd WebBuild/
+        run : ls
   
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          file_pattern: WebBuild/*.js WebBuild/*.json WebBuild/*.unityweb
+          file_pattern: WebGL/WebBuild/*.js WebGL/WebBuild/*.json WebGL/WebBuild/*.unityweb
           tagging_message: 'release'
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

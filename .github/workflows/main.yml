@@ -68,7 +68,7 @@ jobs:
           ref: builds
           
       - name: Apply stashed changes
-        run : git stash pop
+        run : git stash show -p | git apply && git stash drop
   
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4

@@ -22,6 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         
+      #  Store library in cache
       - uses: actions/cache@v2
         with:
           path: ./Phong/Library
@@ -33,12 +34,20 @@ jobs:
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
         with:
-          allowDirtyBuild: true
           projectPath: ./Phong/
           unityVersion: 2019.4.10f1
           targetPlatform: WebGL
           
+      - name: Deploy WebGL build on github pages
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Deploy web build
+          file_pattern: Build/*.*
+          tagging_message: 'release'
+           # Optional: Skip internal call to `git fetch`
+          skip_fetch: true
+          
       - uses: actions/upload-artifact@v1
         with:
-          name: WebGLBuild
-          path: build/WebGL
+          name: WebBuild
+          path: Build

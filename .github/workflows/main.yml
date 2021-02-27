@@ -34,10 +34,12 @@ jobs:
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
         with:
-          allowDirtyBuild: true
+          allowDirtyBuild: true # TODO - investigate
           projectPath: ./Phong/
           unityVersion: 2019.4.10f1
           targetPlatform: WebGL
+          buildsPath: .
+          buildName: WebBuild
   
       - name: Directory viewer
         run : ls
@@ -46,7 +48,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          # file_pattern: Build/*.js Build/*.json Build/*.unityweb
+          file_pattern: WebBuild/*.js WebBuild/*.json WebBuild/*.unityweb
           tagging_message: 'release'
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

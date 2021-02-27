@@ -41,6 +41,9 @@ jobs:
       - name: Get rid of lib files before checking out builds branch
         run : git restore Phong/
         
+      - name: Track the webBuild folder
+        run : git add WebBuild
+        
       - name: Stash the WebGL folder
         run : git stash
       

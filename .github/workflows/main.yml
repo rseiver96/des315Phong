@@ -38,15 +38,23 @@ jobs:
           buildsPath: .
           buildName: WebBuild
   
-      - name: Get rid of lib files before checking out release branch
-        run : git restore Phong/
+      - name: Get rid of lib files before checking out builds branch
+        run : 
+          git restore Phong/
+          git stash WebGL
+      
+      - name: Checkout builds branch
+        uses: actions/checkout@v2
+        with:
+          ref: builds
+          
+      - name: Apply stashed changes
+        run: git stash pop
   
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          # push the build on a separate branch
-          branch: builds
           file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

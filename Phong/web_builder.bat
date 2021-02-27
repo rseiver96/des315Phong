@@ -1,1 +1,0 @@
-%UnityEditor2019% -logFile buildInfo.txt -quit -batchmode -nographics -projectPath "D:\DigiPen\2021Spring\DES315\Phong" -buildTarget WebGL WebBuild/

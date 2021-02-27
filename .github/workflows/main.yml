@@ -47,11 +47,11 @@ jobs:
           commit_message: Deploy web build
           # push the build on a separate branch
           branch: builds
-          file_pattern: WebGL/WebBuild/*.js WebGL/WebBuild/*.json WebGL/WebBuild/*.unityweb
+          file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true
           
-      - uses: actions/upload-artifact@v1
-        with:
-          name: WebBuild
-          path: Build
+    #  - uses: actions/upload-artifact@v1
+     #   with:
+      #    name: WebBuild
+       #   path: Build

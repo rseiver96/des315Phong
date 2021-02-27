@@ -37,6 +37,9 @@ jobs:
           targetPlatform: WebGL
           buildsPath: .
           buildName: WebBuild
+          
+      - name: Show git status
+        run : git status
   
       - name: Get rid of lib files before checking out builds branch
         run : git restore Phong/
@@ -44,9 +47,15 @@ jobs:
       - name: Track all changes
         run : git add .
         
+      - name: Show git status
+        run : git status
+        
       - name: Stash the WebGL folder
         run : git stash
       
+      - name: Show git status
+        run : git status
+        
       - name: Checkout builds branch
         run : git checkout builds
           

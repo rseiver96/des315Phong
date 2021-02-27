@@ -45,7 +45,7 @@ jobs:
         run : git rm -r -f Phong/
              
       - name: Setup ownership for build directory
-        run : sudo chown -R WebGL/
+        run : sudo chown -R $USER WebGL/
         
       - name: Setup perms for build directory
         run : sudo chmod -R u+rw WebGL/

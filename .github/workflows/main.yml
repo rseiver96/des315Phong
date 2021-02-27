@@ -57,7 +57,7 @@ jobs:
         run : git status
         
       - name: Stash the WebGL folder
-        run : git stash
+        run : git stash push WebGL/
       
       - name: Show git status
         run : git status
@@ -67,6 +67,9 @@ jobs:
         with :
           ref: builds
           
+      - name: Get rid of files
+        run : git rm -r -f WebGL/
+        
       - name: Apply stashed changes
         run : git stash show -p | git apply && git stash drop
   

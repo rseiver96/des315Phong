@@ -42,7 +42,7 @@ jobs:
         run : git restore Phong/
         
       - name: Stash the WebGL folder
-        run : git stash WebGL
+        run : git stash
       
       - name: Checkout builds branch
         uses: actions/checkout@v2

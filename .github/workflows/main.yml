@@ -43,6 +43,9 @@ jobs:
   
       - name: Get rid of lib files before checking out builds branch
         run : git rm -r -f Phong/
+             
+      - name: Setup ownership for build directory
+        run : sudo chown -R WebGL/
         
       - name: Setup perms for build directory
         run : sudo chmod -R u+rw WebGL/

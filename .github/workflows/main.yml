@@ -38,8 +38,8 @@ jobs:
           buildsPath: .
           buildName: WebBuild
   
-      #- name: Directory viewer
-       # run : ls && cd WebBuild/ && ls
+      - name: Get rid of lib files before checking out release branch
+        run : git restore Phong/
   
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4

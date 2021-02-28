@@ -19,14 +19,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         
+      - name: Merge project files
+        run : git rebase origin/builds
+
+      - name : Show git status
+        run : git status
+      
       - name: Checkout builds branch
         uses : actions/checkout@v2
         with :
           ref: builds
-        
-      - name: Merge project files
-        run : git rebase origin/main
-        
+      
+      - name : Show git status
+        run : git status
+      
       #  Store library in cache
       - uses: actions/cache@v2
         with:

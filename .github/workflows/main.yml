@@ -33,7 +33,7 @@ jobs:
         run : git config user.name "AmoghSubhedar"     
       
       - name: Merge project files
-        run : git rebase origin/main builds -f
+        run : git rebase origin/main builds -f -s ours
       
       - name : Show git status
         run : git status

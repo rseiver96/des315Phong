@@ -1,4 +1,4 @@
-name: (Backup) Build and commit WebGL in same branch
+name: Windows build and commit WebGL in same branch
 
 on:
   push:
@@ -10,13 +10,11 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: install ffmpeg
-        run : sudo apt install ffmpeg
-        
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         
@@ -26,8 +24,8 @@ jobs:
           #path: ./Phong/Library
           #key: Library-Phong/-WebGL
           #restore-keys: |
-            #Library-Phong/-
-            #Library-
+            Library-Phong/-
+            Library-
         
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
@@ -37,12 +35,12 @@ jobs:
           unityVersion: 2019.4.10f1
           targetPlatform: WebGL
           buildsPath: .
-          buildName: WebBuild
+          buildName: WebBuild-Win
           
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
+          file_pattern: WebGL/WebBuild-Win/Build/* WebGL/WebBuild-Win/TemplateData/*
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

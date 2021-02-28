@@ -1,7 +1,7 @@
 {
 "companyName": "DefaultCompany",
 "productName": "Phong",
-"productVersion": "0.0.48",
+"productVersion": "0.0.51",
 "dataUrl": "WebBuild.data.unityweb",
 "wasmCodeUrl": "WebBuild.wasm.code.unityweb",
 "wasmFrameworkUrl": "WebBuild.wasm.framework.unityweb",

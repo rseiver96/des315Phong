@@ -2,7 +2,7 @@ name: Windows build and commit WebGL in same branch
 
 on:
   push:
-    branches: [ backup ]
+    branches: [ windows-build ]
 env:
  UNITY_LICENSE : ${{secrets.UNITY_LICENSE_2019}}
  
@@ -24,8 +24,8 @@ jobs:
           #path: ./Phong/Library
           #key: Library-Phong/-WebGL
           #restore-keys: |
-            Library-Phong/-
-            Library-
+            #Library-Phong/-
+            #Library-
         
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6

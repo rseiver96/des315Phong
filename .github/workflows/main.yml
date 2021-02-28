@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
         
       - name: Merge project files
-        run : git rebase origin/builds
+        run : git rebase builds
 
       - name : Show git status
         run : git status

@@ -26,8 +26,11 @@ jobs:
         with :
           ref: main
                     
-      - name : Show git status
-        run : git status     
+      - name : Setup config credentials
+        run : git config user.email "amogh.subhedar@gmail.com"
+        
+      - name : Setup config credentials
+        run : git config user.name "AmoghSubhedar"     
       
       - name: Merge project files
         run : git rebase origin/main origin/builds --apply

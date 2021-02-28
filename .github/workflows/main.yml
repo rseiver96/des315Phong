@@ -16,19 +16,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      - name : Show git status
-        run : git status
       
       - name: Checkout builds branch
         uses : actions/checkout@v2
         with :
           ref: builds
+                    
+      - name : Show git status
+        run : git status     
       
       - name: Merge project files
-        run : git merge origin/main --allow-unrelated-histories
+        run : git rebase build --allow-unrelated-histories
       
       - name : Show git status
         run : git status

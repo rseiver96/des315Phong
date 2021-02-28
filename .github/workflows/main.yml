@@ -56,8 +56,8 @@ jobs:
       - name: Show git status
         run : git status
         
-      - name: Show git status
-        run : git status push WebGL/
+      - name: Stash push
+        run : git stash push WebGL/
         
       - name: Stash the WebGL folder
         run : git stash branch temp-stash

@@ -30,7 +30,7 @@ jobs:
         run : git status     
       
       - name: Merge project files
-        run : git rebase build --allow-unrelated-histories
+        run : git rebase build
       
       - name : Show git status
         run : git status

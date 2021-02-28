@@ -19,6 +19,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         
+      - name: Checkout builds branch
+        uses : actions/checkout@v2
+        with :
+          ref: builds
+        
+      - name: Merge project files
+        run : git merge main
+        
       #  Store library in cache
       - uses: actions/cache@v2
         with:
@@ -37,51 +45,7 @@ jobs:
           targetPlatform: WebGL
           buildsPath: .
           buildName: WebBuild
-          
-      - name: Show git status
-        run : git status
-  
-      - name: Get rid of lib files before checking out builds branch
-        run : git restore Phong/
-             
-      - name: Setup ownership for build directory
-        run : sudo chown -R $USER .
-        
-      - name: Setup perms for build directory
-        run : sudo chmod -R u+rw .
-        
-      - name: Track all changes
-        run : git add .
-        
-      - name: Show git status
-        run : git status
-        
-      - name: Stash push
-        run : git stash push WebGL/
-        
-      - name: Stash the WebGL folder
-        run : git stash branch temp-stash
-      
-      - name: Show git status
-        run : git status
-                
-      #- name: Store stash in branch
-#        run : git stash show -p | git apply && git stash drop
-        
-      - name: Checkout builds branch
-        uses : actions/checkout@v2
-        with :
-          ref: builds
-          
-   #   - name: Get rid of files
-    #    run : git rm -r -f WebGL/
-    
-      - name: Rebase branches
-        run : git rebase builds temp-stash --apply --ignore-whitespace
-        
- #     - name: Apply stashed changes
-  #      run : git stash show -p | git apply && git stash drop
-  
+            
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -93,4 +57,4 @@ jobs:
     #  - uses: actions/upload-artifact@v1
      #   with:
       #    name: WebBuild
-       #   path: Build
+       #   path: WebGL

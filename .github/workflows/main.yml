@@ -30,7 +30,7 @@ jobs:
         run : git status     
       
       - name: Merge project files
-        run : git rebase main builds --apply
+        run : git rebase origin/main builds --apply
       
       - name : Show git status
         run : git status

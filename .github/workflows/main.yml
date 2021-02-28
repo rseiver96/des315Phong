@@ -57,21 +57,27 @@ jobs:
         run : git status
         
       - name: Stash the WebGL folder
-        run : git stash push WebGL/
+        run : git stash branch temp-stash
       
       - name: Show git status
         run : git status
+                
+      #- name: Store stash in branch
+#        run : git stash show -p | git apply && git stash drop
         
       - name: Checkout builds branch
         uses : actions/checkout@v2
         with :
           ref: builds
           
-      - name: Get rid of files
-        run : git rm -r -f WebGL/
+   #   - name: Get rid of files
+    #    run : git rm -r -f WebGL/
+    
+      - name: Rebase branches
+        run : git rebase builds temp-stash --apply --ignore-whitespace
         
-      - name: Apply stashed changes
-        run : git stash show -p | git apply && git stash drop
+ #     - name: Apply stashed changes
+  #      run : git stash show -p | git apply && git stash drop
   
       - name: Deploy WebGL build on github pages
         uses: stefanzweifel/git-auto-commit-action@v4

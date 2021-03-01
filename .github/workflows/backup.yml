@@ -10,7 +10,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,7 +34,7 @@ jobs:
         with:
           allowDirtyBuild: true # TODO - investigate why branch is always dirty
           projectPath: Phong/
-          unityVersion: 2019.4.12f1
+          unityVersion: 2019.4.10f1
           targetPlatform: WebGL
           buildsPath: .
           buildName: WebBuild

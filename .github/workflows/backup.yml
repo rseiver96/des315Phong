@@ -27,7 +27,7 @@ jobs:
             Library-
         
       - name: Unity - Builder
-        uses: game-ci/unity-builder@v2.0-alpha-5
+        uses: game-ci/unity-builder@v2.0-alpha-2
         with:
           allowDirtyBuild: true # TODO - investigate why branch is always dirty
           projectPath: Phong/

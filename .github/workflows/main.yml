@@ -11,7 +11,7 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    name : Make a webGL build
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -64,6 +64,7 @@ jobs:
         with:
           name: WebBuild
           path: WebGL/
+          retention-days: 1
       
   commit_build:
     name : Push build on the builds branch
@@ -75,8 +76,8 @@ jobs:
         with :
           ref: builds
       
-      - name: Delete the old build
-        run : rm -r WebBuild/
+      #- name: Delete the old build
+      #  run : rm -r WebBuild/
 
       - name: Download artifact from previous job
         uses: actions/download-artifact@v2

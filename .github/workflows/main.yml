@@ -91,6 +91,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Deploy web build
-          file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
+          file_pattern: WebBuild/Build/* WebBuild/TemplateData/*
            # Optional: Skip internal call to `git fetch`
           skip_fetch: true

@@ -18,26 +18,7 @@ jobs:
     steps:
       - name: Checkout main branch
         uses : actions/checkout@v2
-        with :
-          ref: main
-          
-      - name: Checkout builds branch
-        uses : actions/checkout@v2
-        with :
-          ref: builds
-                    
-      - name : Setup config credentials
-        run : git config user.email "amogh.subhedar@gmail.com"
-        
-      - name : Setup config credentials
-        run : git config user.name "AmoghSubhedar"     
-      
-      - name: Merge project files
-        run : git rebase origin/main builds -f -s ours
-      
-      - name : Show git status
-        run : git status
-      
+
       #  Store library in cache
       - uses: actions/cache@v2
         with:
@@ -60,7 +41,7 @@ jobs:
       - name: Show git status
         run : git status
     
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: WebBuild
           path: WebGL/

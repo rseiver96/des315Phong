@@ -20,13 +20,13 @@ jobs:
       - uses: actions/checkout@v2
 
       # Store library in cache
-      - uses: actions/cache@v2
-        with:
-          path: ./Phong/Library
-          key: Library-Phong-WebGL
-          restore-keys: |
-            Library-Phong-
-            Library-
+      #- uses: actions/cache@v2
+       # with:
+          #path: ./Phong/Library
+          #key: Library-Phong-WebGL
+          #restore-keys: |
+            #Library-Phong-
+            #Library-
         
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
@@ -36,12 +36,10 @@ jobs:
           unityVersion: $UNITY_VERSION
           targetPlatform: WebGL
           buildsPath: .
-          buildName: WebBuild
-          
-      - name: Deploy WebGL build on github pages
-        uses: stefanzweifel/git-auto-commit-action@v4
+          buildName: Phong
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
         with:
-          commit_message: Deploy web build
-          file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
-           # Optional: Skip internal call to `git fetch`
-          skip_fetch: true
+          name: TestBuild
+          path: WebGL/

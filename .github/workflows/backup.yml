@@ -18,15 +18,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Store library in cache
-      - uses: actions/cache@v2
-        with:
-          path: ./Phong/Library
-          key: Library-Phong-WebGL
-          restore-keys: |
-            Library-Phong-
-            Library-
         
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
@@ -37,6 +28,7 @@ jobs:
           targetPlatform: WebGL
           buildsPath: .
           buildName: Phong
+          customImage: 'amoghsubhedar/unity-webgl-editor:latest'
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2

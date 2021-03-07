@@ -30,8 +30,10 @@ jobs:
           buildName: Phong
           customImage: 'amoghsubhedar/unity-webgl-editor:latest'
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
+      - name: Deploy WebGL build on github pages
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          name: TestBuild
-          path: WebGL/
+          commit_message: Deploy web build
+          file_pattern: WebGL/WebBuild/Build/* WebGL/WebBuild/TemplateData/*
+           # Optional: Skip internal call to `git fetch`
+          skip_fetch: true

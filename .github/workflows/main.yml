@@ -5,11 +5,12 @@ on:
   push:
     branches: [ main ]
 env:
- UNITY_LICENSE : ${{secrets.UNITY_LICENSE_2019}}
- 
+  UNITY_LICENSE : ${{secrets.UNITY_LICENSE_2019}} # This needs to be setup in the github repository settings
+  UNITY_VERSION : 2019.4.10f1
+  PROJECT_PATH  : /Phong
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
     name : Make a webGL build
     runs-on: ubuntu-latest
@@ -22,19 +23,19 @@ jobs:
     #  Store library in cache
       - uses: actions/cache@v2
         with:
-          path: ./Phong/Library
+          path: $PROJECT_PATH/Library
           key: LibFiles
 
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           allowDirtyBuild: true # TODO - investigate
-          projectPath: Phong/
-          unityVersion: 2019.4.10f1
+          projectPath: $PROJECT_PATH
+          unityVersion: $UNITY_VERSION
           targetPlatform: WebGL
           buildsPath: .
           buildName: WebBuild
-          customImage: 'amoghsubhedar/unity-webgl-editor:latest'
+          customImage: 'amoghsubhedar/unity-webgl-editor:latest' # using a custom docker image because the default ones for this unity version don't have ffmpeg
       
       - name: Show git status
         run : git status
